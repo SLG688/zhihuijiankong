@@ -91,5 +91,23 @@ Page({
       path: '/pages/article-detail/article-detail?id=' + this.data.article.id,
       imageUrl: ''
     };
+  },
+  
+  // 跳转到紧急求助页面
+  goToEmergency() {
+    console.log('点击紧急求助按钮');
+    wx.switchTab({
+      url: '../emergency/emergency',
+      success: function(res) {
+        console.log('跳转成功:', res);
+      },
+      fail: function(res) {
+        console.log('跳转失败:', res);
+        wx.showToast({
+          title: '跳转失败，请稍后重试',
+          icon: 'none'
+        });
+      }
+    });
   }
 })

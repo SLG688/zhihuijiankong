@@ -1,4 +1,17 @@
 // pages/health-monitor/health-monitor.js
+// 导入存储工具类和验证工具类
+const { saveHealthData } = require('../../utils/storage');
+const { 
+  validateRequired, 
+  validateNumber, 
+  validateBloodPressure, 
+  validateBloodSugar, 
+  validateHeartRate, 
+  validateWeight, 
+  validateExerciseDuration, 
+  validateSleepDuration 
+} = require('../../utils/validator');
+
 Page({
   data: {
     systolic: '',
@@ -94,50 +107,20 @@ Page({
     const systolic = this.data.systolic;
     const diastolic = this.data.diastolic;
     
-    if (!systolic || !diastolic) {
-      wx.showToast({
-        title: '请输入完整的血压数据',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(systolic) || isNaN(diastolic)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查血压范围并显示警告
-    const systolicNum = parseInt(systolic);
-    const diastolicNum = parseInt(diastolic);
-    if (systolicNum < 60 || systolicNum > 200 || diastolicNum < 40 || diastolicNum > 120) {
-      wx.showToast({
-        title: '血压值超出正常范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(systolic, '请输入收缩压')) return;
+    if (!validateRequired(diastolic, '请输入舒张压')) return;
+    if (!validateNumber(systolic, '请输入有效的收缩压')) return;
+    if (!validateNumber(diastolic, '请输入有效的舒张压')) return;
+    if (!validateBloodPressure(systolic, diastolic)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录血压数据
+    // 记录血压数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: []
-        }
-      };
-    }
     const bloodPressureData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -145,6 +128,9 @@ Page({
     };
     
     app.globalData.healthData.bloodPressure.push(bloodPressureData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -166,49 +152,18 @@ Page({
     const bloodSugar = this.data.bloodSugar;
     const selectedBloodSugarTime = this.data.selectedBloodSugarTime;
     
-    if (!bloodSugar) {
-      wx.showToast({
-        title: '请输入血糖值',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(bloodSugar)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查血糖范围并显示警告
-    const bloodSugarNum = parseFloat(bloodSugar);
-    if (bloodSugarNum < 2 || bloodSugarNum > 33) {
-      wx.showToast({
-        title: '血糖值超出正常范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(bloodSugar, '请输入血糖值')) return;
+    if (!validateNumber(bloodSugar, '请输入有效的血糖值')) return;
+    if (!validateBloodSugar(bloodSugar)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录血糖数据
+    // 记录血糖数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: []
-        }
-      };
-    }
     const bloodSugarData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -217,6 +172,9 @@ Page({
     };
     
     app.globalData.healthData.bloodSugar.push(bloodSugarData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -237,49 +195,18 @@ Page({
   recordHeartRate() {
     const heartRate = this.data.heartRate;
     
-    if (!heartRate) {
-      wx.showToast({
-        title: '请输入心率值',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(heartRate)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查心率范围并显示警告
-    const heartRateNum = parseInt(heartRate);
-    if (heartRateNum < 40 || heartRateNum > 200) {
-      wx.showToast({
-        title: '心率值超出正常范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(heartRate, '请输入心率值')) return;
+    if (!validateNumber(heartRate, '请输入有效的心率值')) return;
+    if (!validateHeartRate(heartRate)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录心率数据
+    // 记录心率数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: []
-        }
-      };
-    }
     const heartRateData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -287,6 +214,9 @@ Page({
     };
     
     app.globalData.healthData.heartRate.push(heartRateData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -307,50 +237,18 @@ Page({
   recordWeight() {
     const weight = this.data.weight;
     
-    if (!weight) {
-      wx.showToast({
-        title: '请输入体重值',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(weight)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查体重范围并显示警告
-    const weightNum = parseFloat(weight);
-    if (weightNum < 30 || weightNum > 200) {
-      wx.showToast({
-        title: '体重值超出正常范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(weight, '请输入体重值')) return;
+    if (!validateNumber(weight, '请输入有效的体重值')) return;
+    if (!validateWeight(weight)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录体重数据
+    // 记录体重数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: [],
-          exercise: []
-        }
-      };
-    }
     const weightData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -358,6 +256,9 @@ Page({
     };
     
     app.globalData.healthData.weight.push(weightData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -380,51 +281,18 @@ Page({
     const selectedExerciseType = this.data.selectedExerciseType;
     const selectedExerciseIntensity = this.data.selectedExerciseIntensity;
     
-    if (!exerciseDuration) {
-      wx.showToast({
-        title: '请输入运动时长',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(exerciseDuration)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查运动时长范围并显示警告
-    const durationNum = parseInt(exerciseDuration);
-    if (durationNum < 1 || durationNum > 300) {
-      wx.showToast({
-        title: '运动时长超出合理范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(exerciseDuration, '请输入运动时长')) return;
+    if (!validateNumber(exerciseDuration, '请输入有效的运动时长')) return;
+    if (!validateExerciseDuration(exerciseDuration)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录运动数据
+    // 记录运动数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: [],
-          exercise: [],
-          sleep: []
-        }
-      };
-    }
     const exerciseData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -434,6 +302,9 @@ Page({
     };
     
     app.globalData.healthData.exercise.push(exerciseData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -455,51 +326,18 @@ Page({
     const sleepDuration = this.data.sleepDuration;
     const selectedSleepQuality = this.data.selectedSleepQuality;
     
-    if (!sleepDuration) {
-      wx.showToast({
-        title: '请输入睡眠时长',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 添加数字验证
-    if (isNaN(sleepDuration)) {
-      wx.showToast({
-        title: '请输入有效的数字',
-        icon: 'none'
-      });
-      return;
-    }
-    
-    // 检查睡眠时长范围并显示警告
-    const durationNum = parseFloat(sleepDuration);
-    if (durationNum < 1 || durationNum > 24) {
-      wx.showToast({
-        title: '睡眠时长超出合理范围，但仍将记录',
-        icon: 'none'
-      });
-    }
+    // 验证输入
+    if (!validateRequired(sleepDuration, '请输入睡眠时长')) return;
+    if (!validateNumber(sleepDuration, '请输入有效的睡眠时长')) return;
+    if (!validateSleepDuration(sleepDuration)) return;
     
     // 显示加载状态
     wx.showLoading({
       title: '记录中...'
     });
     
-    // 模拟记录睡眠数据
+    // 记录睡眠数据
     const app = getApp();
-    if (!app.globalData || !app.globalData.healthData) {
-      app.globalData = {
-        healthData: {
-          bloodPressure: [],
-          bloodSugar: [],
-          heartRate: [],
-          weight: [],
-          exercise: [],
-          sleep: []
-        }
-      };
-    }
     const sleepData = {
       date: new Date().toISOString().split('T')[0],
       time: new Date().toTimeString().substring(0, 5),
@@ -508,6 +346,9 @@ Page({
     };
     
     app.globalData.healthData.sleep.push(sleepData);
+    
+    // 保存到本地存储
+    saveHealthData(app.globalData.healthData);
     
     setTimeout(() => {
       wx.hideLoading();
@@ -547,7 +388,9 @@ Page({
       bloodPressure: [],
       bloodSugar: [],
       heartRate: [],
-      weight: []
+      weight: [],
+      exercise: [],
+      sleep: []
     };
     
     const selectedHealthMetric = this.data.selectedHealthMetric;
@@ -826,8 +669,19 @@ Page({
   
   // 跳转到紧急求助页面
   goToEmergency() {
-    wx.navigateTo({
-      url: '../emergency/emergency'
+    console.log('点击紧急求助按钮');
+    wx.switchTab({
+      url: '../emergency/emergency',
+      success: function(res) {
+        console.log('跳转成功:', res);
+      },
+      fail: function(res) {
+        console.log('跳转失败:', res);
+        wx.showToast({
+          title: '跳转失败，请稍后重试',
+          icon: 'none'
+        });
+      }
     });
   }
 })

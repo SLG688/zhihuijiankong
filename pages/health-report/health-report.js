@@ -236,5 +236,23 @@ Page({
   // 返回健康档案页面
   goBack: function() {
     wx.navigateBack();
+  },
+  
+  // 跳转到紧急求助页面
+  goToEmergency: function() {
+    console.log('点击紧急求助按钮');
+    wx.switchTab({
+      url: '../emergency/emergency',
+      success: function(res) {
+        console.log('跳转成功:', res);
+      },
+      fail: function(res) {
+        console.log('跳转失败:', res);
+        wx.showToast({
+          title: '跳转失败，请稍后重试',
+          icon: 'none'
+        });
+      }
+    });
   }
 });

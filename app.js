@@ -1,8 +1,14 @@
 // app.js
+// 导入存储工具类
+const { loadHealthData, loadMedicationReminders, loadUserInfo, loadEmergencyContacts } = require('./utils/storage');
+
 App({
   onLaunch() {
     // 小程序启动时的初始化操作
     console.log('智慧健控小程序启动');
+    
+    // 初始化全局数据
+    this.initGlobalData();
     
     // 检查用户授权
     this.checkAuth();
@@ -14,6 +20,18 @@ App({
   
   onHide() {
     // 小程序隐藏时的操作
+  },
+  
+  // 初始化全局数据
+  initGlobalData() {
+    // 从本地存储加载数据
+    this.globalData = {
+      userInfo: loadUserInfo(),
+      healthData: loadHealthData(),
+      medicationReminders: loadMedicationReminders(),
+      emergencyContacts: loadEmergencyContacts()
+    };
+    console.log('全局数据初始化完成');
   },
   
   checkAuth() {
@@ -42,7 +60,9 @@ App({
       bloodPressure: [],
       bloodSugar: [],
       heartRate: [],
-      weight: []
+      weight: [],
+      exercise: [],
+      sleep: []
     },
     medicationReminders: [
       { time: '08:00', content: '服用缬沙坦胶囊 80mg', status: '未服用' },

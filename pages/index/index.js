@@ -1,4 +1,7 @@
 // pages/index/index.js
+// 导入存储工具类
+const { saveMedicationReminders } = require('../../utils/storage');
+
 Page({
   data: {
     bloodPressure: '120/80',
@@ -25,28 +28,26 @@ Page({
   },
   
   getHealthData() {
-    // 模拟从全局数据或服务器获取健康数据
+    // 从全局数据中获取健康数据
     const app = getApp();
     if (app.globalData && app.globalData.healthData) {
-      // 这里可以从全局数据中获取最新的健康数据
       console.log('健康数据:', app.globalData.healthData);
-    } else {
-      // 初始化全局健康数据
-      app.globalData = app.globalData || {};
-      app.globalData.healthData = {
-        bloodPressure: [],
-        bloodSugar: [],
-        heartRate: [],
-        weight: []
-      };
+      
+      // 尝试从健康数据中获取最新值
+      const healthData = app.globalData.healthData;
+      if (healthData.bloodPressure.length > 0) {
+        const latestBP = healthData.bloodPressure[healthData.bloodPressure.length - 1];
+        this.setData({ bloodPressure: latestBP.value });
+      }
+      if (healthData.heartRate.length > 0) {
+        const latestHR = healthData.heartRate[healthData.heartRate.length - 1];
+        this.setData({ heartRate: latestHR.value });
+      }
+      if (healthData.bloodSugar.length > 0) {
+        const latestBS = healthData.bloodSugar[healthData.bloodSugar.length - 1];
+        this.setData({ bloodSugar: latestBS.value });
+      }
     }
-    
-    // 确保页面数据已设置
-    this.setData({
-      bloodPressure: '120/80',
-      heartRate: '75',
-      bloodSugar: '5.6'
-    });
   },
   
   getTodayReminders() {
@@ -68,6 +69,8 @@ Page({
       this.setData({
         todayReminders: app.globalData.medicationReminders
       });
+      // 保存到本地存储
+      saveMedicationReminders(app.globalData.medicationReminders);
     }
   },
   
@@ -91,6 +94,9 @@ Page({
     this.setData({
       todayReminders: app.globalData.medicationReminders
     });
+    
+    // 保存到本地存储
+    saveMedicationReminders(app.globalData.medicationReminders);
     
     wx.showToast({
       title: '已标记为已服用',

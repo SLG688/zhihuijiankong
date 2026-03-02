@@ -71,4 +71,10 @@
       </view>
     </view>
   </view>
+
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-button" bindtap="goToEmergency">
+    <text class="emergency-icon">🆘</text>
+    <text class="emergency-text">紧急求助</text>
+  </view>
 </view>

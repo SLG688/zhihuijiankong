@@ -58,4 +58,10 @@
     <input class="comment-input" placeholder="写下你的评论..." bindinput="bindCommentInput" />
     <button class="btn btn-primary small-btn" bindtap="submitComment">发送</button>
   </view>
+
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-button" bindtap="goToEmergency">
+    <text class="emergency-icon">🆘</text>
+    <text class="emergency-text">紧急求助</text>
+  </view>
 </view>

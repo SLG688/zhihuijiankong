@@ -1,4 +1,7 @@
 // pages/medication/medication.js
+// 导入存储工具类
+const { saveMedicationReminders } = require('../../utils/storage');
+
 Page({
   data: {
     todayMedications: [
@@ -98,6 +101,9 @@ Page({
       });
     }
     app.globalData.medicationReminders = medicationReminders;
+    
+    // 保存到本地存储
+    saveMedicationReminders(app.globalData.medicationReminders);
   },
   
   // 标记已服用
@@ -249,8 +255,19 @@ Page({
   
   // 跳转到紧急求助页面
   goToEmergency() {
-    wx.navigateTo({
-      url: '../emergency/emergency'
+    console.log('点击紧急求助按钮');
+    wx.switchTab({
+      url: '../emergency/emergency',
+      success: function(res) {
+        console.log('跳转成功:', res);
+      },
+      fail: function(res) {
+        console.log('跳转失败:', res);
+        wx.showToast({
+          title: '跳转失败，请稍后重试',
+          icon: 'none'
+        });
+      }
     });
   }
 })

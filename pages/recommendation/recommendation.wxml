@@ -67,4 +67,10 @@
   
   <!-- 刷新推荐 -->
   <button class="btn btn-primary" bindtap="refreshRecommendations">刷新推荐</button>
+
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-button" bindtap="goToEmergency">
+    <text class="emergency-icon">🆘</text>
+    <text class="emergency-text">紧急求助</text>
+  </view>
 </view>

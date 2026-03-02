@@ -23,4 +23,10 @@
     <button class="btn btn-default" bindtap="cancelEdit">取消</button>
     <button class="btn btn-primary" bindtap="submitForm">保存</button>
   </view>
+
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-button" bindtap="goToEmergency">
+    <text class="emergency-icon">🆘</text>
+    <text class="emergency-text">紧急求助</text>
+  </view>
 </view>
