@@ -1,0 +1,132 @@
+/* pages/health-monitor/health-monitor.wxss */
+
+/* 记录区域样式 */
+.record-section {
+  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.record-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.record-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.input-group {
+  margin-bottom: 20rpx;
+}
+
+/* 选择器样式 */
+.picker {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker-text {
+  color: #333333;
+}
+
+/* 图表容器样式 */
+.trend-section {
+  margin-bottom: 20rpx;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.chart-placeholder {
+  color: #999999;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 0 20rpx;
+}
+
+.trend-chart {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 10rpx;
+}
+
+/* 健康指标选择器样式 */
+.health-metric-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 20rpx;
+}
+
+.metric-picker, .time-picker {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .health-metric-selector {
+    flex-direction: column;
+  }
+  
+  .metric-picker, .time-picker {
+    width: 100%;
+  }
+}
+
+/* 健康建议样式 */
+.advice-content {
+  margin-bottom: 20rpx;
+}
+
+.advice-item {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+}
+
+/* 设备连接样式 */
+.device-section {
+  text-align: center;
+}
+
+.device-status {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 20rpx;
+}
+
+.device-tip {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 15rpx;
+  text-align: center;
+}

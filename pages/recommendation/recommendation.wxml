@@ -1,0 +1,70 @@
+<!-- pages/recommendation/recommendation.wxml -->
+<view class="container">
+  <!-- 个性化推荐 -->
+  <view class="card">
+    <text class="section-title">个性化健康建议</text>
+    <view class="recommendation-item">
+      <text class="recommendation-title">基于您的血压数据</text>
+      <text class="recommendation-content">{{bloodPressureRecommendations}}</text>
+    </view>
+    <view class="recommendation-item">
+      <text class="recommendation-title">基于您的血糖数据</text>
+      <text class="recommendation-content">{{bloodSugarRecommendations}}</text>
+    </view>
+    <view class="recommendation-item">
+      <text class="recommendation-title">基于您的运动习惯</text>
+      <text class="recommendation-content">{{exerciseRecommendations}}</text>
+    </view>
+    <view class="recommendation-item">
+      <text class="recommendation-title">基于您的饮食偏好</text>
+      <text class="recommendation-content">{{dietRecommendations}}</text>
+    </view>
+  </view>
+  
+  <!-- 推荐文章 -->
+  <view class="card">
+    <text class="section-title">推荐阅读</text>
+    <view wx:for="{{recommendedArticles}}" wx:key="index" class="article-item" bindtap="viewArticle" data-index="{{index}}">
+      <text class="article-title">{{item.title}}</text>
+      <text class="article-summary">{{item.summary}}</text>
+    </view>
+  </view>
+  
+  <!-- 推荐社区 -->
+  <view class="card">
+    <text class="section-title">推荐社区</text>
+    <view wx:for="{{recommendedCommunities}}" wx:key="index" class="community-item" bindtap="viewCommunity" data-index="{{index}}">
+      <text class="community-name">{{item.name}}</text>
+      <text class="community-desc">{{item.description}}</text>
+    </view>
+  </view>
+  
+  <!-- 健康目标 -->
+  <view class="card">
+    <text class="section-title">健康目标</text>
+    <view class="goal-item">
+      <text class="goal-title">血压控制</text>
+      <view class="goal-progress">
+        <view class="progress-bar" style="width: {{bloodPressureProgress}}%"></view>
+      </view>
+      <text class="goal-status">{{bloodPressureStatus}}</text>
+    </view>
+    <view class="goal-item">
+      <text class="goal-title">血糖控制</text>
+      <view class="goal-progress">
+        <view class="progress-bar" style="width: {{bloodSugarProgress}}%"></view>
+      </view>
+      <text class="goal-status">{{bloodSugarStatus}}</text>
+    </view>
+    <view class="goal-item">
+      <text class="goal-title">运动目标</text>
+      <view class="goal-progress">
+        <view class="progress-bar" style="width: {{exerciseProgress}}%"></view>
+      </view>
+      <text class="goal-status">{{exerciseStatus}}</text>
+    </view>
+  </view>
+  
+  <!-- 刷新推荐 -->
+  <button class="btn btn-primary" bindtap="refreshRecommendations">刷新推荐</button>
+</view>

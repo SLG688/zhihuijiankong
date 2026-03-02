@@ -1,0 +1,171 @@
+/* pages/emergency/emergency.wxss */
+
+/* 紧急求助按钮样式 */
+.emergency-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.emergency-button {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: #f44336;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(244, 67, 54, 0.4);
+  margin-bottom: 20rpx;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4rpx 12rpx rgba(244, 67, 54, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6rpx 16rpx rgba(244, 67, 54, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4rpx 12rpx rgba(244, 67, 54, 0.4);
+  }
+}
+
+.emergency-icon {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.emergency-text {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.emergency-tip {
+  font-size: 24rpx;
+  color: #666666;
+  text-align: center;
+}
+
+/* 紧急联系人样式 */
+.contact-item {
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.contact-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.contact-relation {
+  font-size: 26rpx;
+  color: #666666;
+  background-color: #e0e0e0;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+}
+
+.contact-phone {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+/* 附近医院样式 */
+.hospital-item {
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.hospital-item:last-child {
+  margin-bottom: 0;
+}
+
+.hospital-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.hospital-address {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.hospital-distance {
+  font-size: 24rpx;
+  color: #4CAF50;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+/* 急救常识样式 */
+.knowledge-item {
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.knowledge-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.knowledge-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.knowledge-content {
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+  display: block;
+  padding-left: 20rpx;
+}
+
+/* 小按钮样式 */
+.small-btn {
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+}

@@ -1,0 +1,106 @@
+/* pages/health-articles/health-articles.wxss */
+
+/* 分类部分样式 */
+.category-section {
+  display: flex;
+  overflow-x: auto;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+  white-space: nowrap;
+}
+
+.category-item {
+  padding: 15rpx 30rpx;
+  margin-right: 15rpx;
+  background-color: #f0f0f0;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-item.active {
+  background-color: #4CAF50;
+  color: #ffffff;
+}
+
+.category-item:last-child {
+  margin-right: 0;
+}
+
+/* 文章列表样式 */
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.article-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.article-item:last-child {
+  margin-bottom: 0;
+}
+
+.article-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.article-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.article-summary {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.article-meta {
+  display: flex;
+  gap: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.article-arrow {
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 10rpx;
+}
+
+.no-articles {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 管理员功能样式 */
+.admin-section {
+  margin-top: 20rpx;
+}
+
+.admin-section button {
+  margin-bottom: 15rpx;
+}
+
+.admin-section button:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,164 @@
+/* pages/post/post.wxss */
+
+/* 帖子卡片样式 */
+.post-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  margin-bottom: 20rpx;
+}
+
+.post-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.post-meta {
+  display: flex;
+  gap: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.post-content {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-item:hover {
+  transform: scale(1.05);
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-bottom: 5rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 删除按钮样式 */
+.delete-action .action-text {
+  color: #ff4d4f;
+}
+
+.delete-action:hover {
+  transform: scale(1.05);
+  color: #ff4d4f;
+}
+
+/* 评论区样式 */
+.comment-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.comment-author {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.comment-time {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.comment-content {
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.comment-like {
+  cursor: pointer;
+}
+
+.comment-reply {
+  cursor: pointer;
+}
+
+.no-comments {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 评论输入框样式 */
+.comment-input-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 20rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 15rpx;
+  align-items: center;
+  z-index: 999;
+}
+
+.comment-input {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.small-btn {
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  border-radius: 40rpx;
+}

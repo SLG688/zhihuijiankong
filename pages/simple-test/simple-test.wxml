@@ -1,0 +1,7 @@
+<!-- pages/simple-test/simple-test.wxml -->
+<view class="container">
+  <text class="title">{{message}}</text>
+  <view wx:for="{{items}}" wx:key="id" class="item">
+    <text>{{item.name}}</text>
+  </view>
+</view>

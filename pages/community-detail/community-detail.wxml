@@ -1,0 +1,63 @@
+<!-- pages/community-detail/community-detail.wxml -->
+<view class="container">
+  <!-- 社区信息 -->
+  <view class="community-info-card">
+    <text class="community-name">{{community.name}}</text>
+    <text class="community-desc">{{community.description}}</text>
+    <view class="community-stats">
+      <text class="stat-item">{{community.memberCount}}人</text>
+      <text class="stat-item">{{community.postCount}}帖</text>
+      <text class="stat-item">{{community.category}}</text>
+    </view>
+    <view class="action-buttons">
+      <button wx:if="!isJoined" class="btn btn-primary" bindtap="joinCommunity">加入社区</button>
+      <button wx:else class="btn btn-default" bindtap="leaveCommunity">退出社区</button>
+      <button class="btn btn-default small-btn" bindtap="showMembers">查看成员</button>
+      <button wx:if="isAdmin" class="btn btn-danger small-btn" bindtap="deleteCommunity">删除社区</button>
+    </view>
+  </view>
+  
+  <!-- 帖子列表 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">社区帖子</text>
+      <button class="btn btn-primary small-btn" bindtap="createPost">发布帖子</button>
+    </view>
+    <view wx:for="{{posts}}" wx:key="index" class="post-item" bindtap="viewPost" data-index="{{index}}">
+      <text class="post-title">{{item.title}}</text>
+      <view class="post-meta">
+        <text class="post-author">{{item.author}}</text>
+        <text class="post-time">{{item.time}}</text>
+        <text class="post-stats">
+          <text class="stat">{{item.likes}}赞</text>
+          <text class="stat">{{item.comments}}评论</text>
+        </text>
+      </view>
+    </view>
+    <view wx:if="posts.length === 0" class="no-posts">
+      <text>暂无帖子</text>
+    </view>
+  </view>
+  
+  <!-- 成员列表对话框 -->
+  <view hidden="{{!showMemberList}}" class="dialog-overlay">
+    <view class="dialog-content" style="width: 90%; max-height: 80vh;">
+      <view class="dialog-header">
+        <text class="dialog-title">社区成员</text>
+        <text class="close-btn" bindtap="closeMemberList">×</text>
+      </view>
+      <view class="dialog-body">
+        <view wx:for="{{members}}" wx:key="index" class="member-item">
+          <view class="member-info">
+            <text class="member-name">{{item.name}}</text>
+            <text class="member-role">{{item.role}}</text>
+          </view>
+          <button wx:if="isAdmin && item.role !== '管理员'" class="btn btn-danger small-btn" bindtap="kickMember" data-index="{{index}}">踢出</button>
+        </view>
+        <view wx:if="members.length === 0" class="no-members">
+          <text>暂无成员</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,120 @@
+<!-- pages/health-monitor/health-monitor.wxml -->
+<view class="container">
+  <!-- 健康指标选择 -->
+  <view class="card">
+    <view class="health-metric-selector">
+      <picker class="picker metric-picker" bindchange="bindHealthMetricChange" range="{{healthMetrics}}">
+        <view class="picker-text">{{selectedHealthMetric}}</view>
+      </picker>
+      <picker class="picker time-picker" bindchange="bindTimeRangeChange" range="{{timeRanges}}">
+        <view class="picker-text">{{selectedTimeRange}}</view>
+      </picker>
+    </view>
+  </view>
+  
+  <!-- 数据记录卡片 -->
+  <view class="card">
+    <text class="section-title">记录健康数据</text>
+    
+    <!-- 血压记录 -->
+    <view class="record-section">
+      <text class="record-title">血压</text>
+      <view class="input-group">
+        <input class="input" placeholder="收缩压 (mmHg)" bindinput="bindSystolicInput" />
+        <input class="input" placeholder="舒张压 (mmHg)" bindinput="bindDiastolicInput" />
+      </view>
+      <button class="btn btn-primary" bindtap="recordBloodPressure">记录血压</button>
+    </view>
+    
+    <!-- 血糖记录 -->
+    <view class="record-section">
+      <text class="record-title">血糖</text>
+      <view class="input-group">
+        <input class="input" placeholder="血糖值 (mmol/L)" bindinput="bindBloodSugarInput" />
+        <picker class="picker" bindchange="bindBloodSugarTimeChange" range="{{bloodSugarTimes}}">
+          <view class="picker-text">{{selectedBloodSugarTime}}</view>
+        </picker>
+      </view>
+      <button class="btn btn-primary" bindtap="recordBloodSugar">记录血糖</button>
+    </view>
+    
+    <!-- 心率记录 -->
+    <view class="record-section">
+      <text class="record-title">心率</text>
+      <view class="input-group">
+        <input class="input" placeholder="心率 (次/分钟)" bindinput="bindHeartRateInput" />
+      </view>
+      <button class="btn btn-primary" bindtap="recordHeartRate">记录心率</button>
+    </view>
+    
+    <!-- 体重记录 -->
+    <view class="record-section">
+      <text class="record-title">体重</text>
+      <view class="input-group">
+        <input class="input" placeholder="体重 (kg)" bindinput="bindWeightInput" />
+      </view>
+      <button class="btn btn-primary" bindtap="recordWeight">记录体重</button>
+    </view>
+    
+    <!-- 运动记录 -->
+    <view class="record-section">
+      <text class="record-title">运动</text>
+      <view class="input-group">
+        <picker class="picker" bindchange="bindExerciseTypeChange" range="{{exerciseTypes}}">
+          <view class="picker-text">{{selectedExerciseType}}</view>
+        </picker>
+        <input class="input" placeholder="时长 (分钟)" bindinput="bindExerciseDurationInput" />
+        <picker class="picker" bindchange="bindExerciseIntensityChange" range="{{exerciseIntensities}}">
+          <view class="picker-text">{{selectedExerciseIntensity}}</view>
+        </picker>
+      </view>
+      <button class="btn btn-primary" bindtap="recordExercise">记录运动</button>
+    </view>
+    
+    <!-- 睡眠记录 -->
+    <view class="record-section">
+      <text class="record-title">睡眠</text>
+      <view class="input-group">
+        <input class="input" placeholder="睡眠时长 (小时)" bindinput="bindSleepDurationInput" />
+        <picker class="picker" bindchange="bindSleepQualityChange" range="{{sleepQualities}}">
+          <view class="picker-text">{{selectedSleepQuality}}</view>
+        </picker>
+      </view>
+      <button class="btn btn-primary" bindtap="recordSleep">记录睡眠</button>
+    </view>
+  </view>
+  
+  <!-- 数据趋势 -->
+  <view class="card">
+    <text class="section-title">数据趋势</text>
+    <view class="chart-container">
+      <canvas canvas-id="trendChart" class="trend-chart"></canvas>
+    </view>
+  </view>
+  
+  <!-- 健康建议 -->
+  <view class="card">
+    <text class="section-title">健康建议</text>
+    <view class="advice-content">
+      <text class="advice-item">• 保持规律作息，充足睡眠</text>
+      <text class="advice-item">• 合理饮食，控制盐分和糖分摄入</text>
+      <text class="advice-item">• 适当运动，如散步、太极拳等</text>
+      <text class="advice-item">• 定期监测健康数据，如有异常及时就医</text>
+    </view>
+  </view>
+  
+  <!-- 设备连接 -->
+  <view class="card">
+    <text class="section-title">设备连接</text>
+    <view class="device-section">
+      <text class="device-status">{{deviceStatus}}</text>
+      <button class="btn btn-primary" bindtap="connectDevice">连接设备</button>
+      <text class="device-tip">支持连接血压计、血糖仪等智能健康设备</text>
+    </view>
+  </view>
+  
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-btn" bindtap="goToEmergency">
+    紧急求助
+  </view>
+</view>

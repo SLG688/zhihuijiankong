@@ -1,0 +1,422 @@
+/* pages/index/index.wxss */
+
+/* 容器样式 */
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 欢迎区域样式 */
+.welcome-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 功能网格样式 */
+.function-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.function-item {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.function-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.function-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.health-icon {
+  background-color: #E3F2FD;
+  color: #2196F3;
+}
+
+.rehab-icon {
+  background-color: #E8F5E9;
+  color: #4CAF50;
+}
+
+.med-icon {
+  background-color: #FFF3E0;
+  color: #FF9800;
+}
+
+.knowledge-icon {
+  background-color: #F3E5F5;
+  color: #9C27B0;
+}
+
+.function-text {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 健康数据概览样式 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.health-overview {
+  display: flex;
+  justify-content: space-around;
+}
+
+.overview-item {
+  text-align: center;
+}
+
+.overview-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #4CAF50;
+  display: block;
+  margin-bottom: 5rpx;
+}
+
+.overview-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 区域标题样式 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+/* 今日提醒样式 */
+.reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+  background-color: #f9f9f9;
+  flex-wrap: wrap;
+}
+
+.reminder-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.reminder-item-unfinished {
+  background-color: #FFF3E0;
+  border-left: 4rpx solid #FF9800;
+}
+
+.reminder-time {
+  font-size: 28rpx;
+  color: #666666;
+  flex: 1;
+  min-width: 100rpx;
+}
+
+.reminder-content {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  flex: 3;
+  margin: 0 20rpx;
+  min-width: 200rpx;
+}
+
+.reminder-status {
+  font-size: 24rpx;
+  font-weight: bold;
+  padding: 5rpx 15rpx;
+  border-radius: 15rpx;
+  flex: 1;
+  text-align: center;
+  min-width: 100rpx;
+}
+
+.reminder-status.finished {
+  color: #4CAF50;
+  background-color: #E8F5E9;
+}
+
+.reminder-status.unfinished {
+  color: #FF9800;
+  background-color: #FFF3E0;
+}
+
+.no-reminders {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 对话框样式 */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  width: 80%;
+  max-width: 500rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.dialog-header {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.dialog-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  flex: 1;
+  text-align: center;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #666666;
+  cursor: pointer;
+  padding: 0 10rpx;
+  user-select: none;
+}
+
+.close-btn:active {
+  color: #333333;
+  transform: scale(0.9);
+}
+
+.dialog-body {
+  padding: 20rpx;
+}
+
+.form-item {
+  margin-bottom: 20rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #333333;
+  background-color: #f9f9f9;
+}
+
+.form-input:focus {
+  border-color: #4CAF50;
+  background-color: #ffffff;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+  background-color: #f9f9f9;
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 15rpx 30rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: 1rpx solid #4CAF50;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-default {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1rpx solid #e0e0e0;
+}
+
+.btn-default:hover {
+  background-color: #f5f5f5;
+}
+
+.btn.small-btn {
+  padding: 8rpx 16rpx;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: #ffffff;
+  border: 1rpx solid #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #da190b;
+}
+
+/* 新建提醒表单样式 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.add-reminder-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  width: 80%;
+  max-width: 500rpx;
+  z-index: 999;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.form-header {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.form-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  flex: 1;
+  text-align: center;
+}
+
+.form-close {
+  font-size: 40rpx;
+  color: #666666;
+  cursor: pointer;
+  padding: 0 10rpx;
+  user-select: none;
+}
+
+.form-close:active {
+  color: #333333;
+  transform: scale(0.9);
+}
+
+.form-body {
+  padding: 20rpx;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+  background-color: #f9f9f9;
+}
+
+/* 紧急求助按钮样式 */
+.emergency-btn {
+  position: fixed;
+  bottom: 80rpx;
+  right: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #f44336;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(244, 67, 54, 0.4);
+  z-index: 999;
+}
+
+.emergency-btn:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,14 @@
+<!-- pages/test/test.wxml -->
+<view class="container">
+  <text class="title">测试页面</text>
+  <text class="test-data">{{testData}}</text>
+  
+  <view class="list-section">
+    <text class="list-title">测试列表</text>
+    <view wx:for="{{testList}}" wx:key="index" class="list-item">
+      <text class="item-name">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <button class="btn" bindtap="testFunction">测试按钮</button>
+</view>

@@ -1,0 +1,144 @@
+/* pages/knowledge/knowledge.wxss */
+
+/* 分类部分样式 */
+.category-section {
+  display: flex;
+  overflow-x: auto;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+  white-space: nowrap;
+}
+
+.category-item {
+  padding: 15rpx 30rpx;
+  margin-right: 15rpx;
+  background-color: #f0f0f0;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-item.active {
+  background-color: #4CAF50;
+  color: #ffffff;
+}
+
+.category-item:last-child {
+  margin-right: 0;
+}
+
+/* 知识列表样式 */
+.knowledge-item {
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.knowledge-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.knowledge-item:last-child {
+  margin-bottom: 0;
+}
+
+.knowledge-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.knowledge-summary {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.knowledge-date {
+  font-size: 24rpx;
+  color: #999999;
+  display: block;
+}
+
+.no-knowledge {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 健康资讯样式 */
+.news-item {
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.news-item:last-child {
+  margin-bottom: 0;
+}
+
+.news-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.news-date {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+/* 常见问题样式 */
+.faq-item {
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-question {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.faq-answer {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 1.4;
+  display: block;
+  padding-left: 20rpx;
+}
+
+/* 小按钮样式 */
+.small-btn {
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+}

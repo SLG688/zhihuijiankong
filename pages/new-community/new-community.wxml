@@ -1,0 +1,19 @@
+<!-- pages/new-community/new-community.wxml -->
+<view class="container">
+  <text class="title">{{message}}</text>
+  
+  <view class="section">
+    <text class="section-title">分类</text>
+    <view wx:for="{{categories}}" wx:key="index" class="category-item">
+      <text>{{item}}</text>
+    </view>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">社区列表</text>
+    <view wx:for="{{communities}}" wx:key="index" class="community-item">
+      <text class="community-name">{{item.name}}</text>
+      <text class="community-members">{{item.members}}人</text>
+    </view>
+  </view>
+</view>

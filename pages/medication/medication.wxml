@@ -1,0 +1,66 @@
+<!-- pages/medication/medication.wxml -->
+<view class="container">
+  <!-- 今日用药提醒 -->
+  <view class="card">
+    <text class="section-title">今日用药提醒</text>
+    <view wx:for="{{todayMedications}}" wx:key="index" class="medication-item">
+      <view class="medication-info">
+        <text class="medication-name">{{item.name}}</text>
+        <text class="medication-time">{{item.time}}</text>
+      </view>
+      <view class="medication-details">
+          <text class="medication-dosage">剂量：{{item.dosage}}</text>
+          <text class="medication-status {{item.status === '已服用' ? 'finished' : 'unfinished'}}">{{item.status}}</text>
+        </view>
+      <button wx:if="item.status === '未服用'" class="btn btn-primary small-btn" bindtap="takeMedicine" data-index="{{index}}">标记已服用</button>
+    </view>
+    <view wx:if="todayMedications.length === 0" class="no-medications">
+      <text>今日无用药提醒</text>
+    </view>
+  </view>
+  
+  <!-- 用药管理 -->
+  <view class="card">
+    <text class="section-title">用药管理</text>
+    <button class="btn btn-primary" bindtap="addMedication">添加用药提醒</button>
+    <button class="btn btn-primary" bindtap="editMedication">编辑用药提醒</button>
+    <button class="btn btn-primary" bindtap="deleteMedication">删除用药提醒</button>
+  </view>
+  
+  <!-- 用药记录 -->
+  <view class="card">
+    <text class="section-title">用药记录</text>
+    <view class="record-item" wx:for="{{medicationRecords}}" wx:key="index">
+      <text class="record-date">{{item.date}}</text>
+      <text class="record-medication">{{item.medication}}</text>
+      <text class="record-time">{{item.time}}</text>
+      <text class="record-status">{{item.status}}</text>
+    </view>
+    <view wx:if="medicationRecords.length === 0" class="no-records">
+      <text>暂无用药记录</text>
+    </view>
+  </view>
+  
+  <!-- 用药知识 -->
+  <view class="card">
+    <text class="section-title">用药知识</text>
+    <view class="knowledge-item">
+      <text class="knowledge-title">正确服药时间</text>
+      <text class="knowledge-content">• 饭前服药：一般指饭前30分钟</text>
+      <text class="knowledge-content">• 饭后服药：一般指饭后15-30分钟</text>
+      <text class="knowledge-content">• 睡前服药：一般指睡前30分钟</text>
+    </view>
+    <view class="knowledge-item">
+      <text class="knowledge-title">服药注意事项</text>
+      <text class="knowledge-content">• 遵医嘱服药，不要自行增减药量</text>
+      <text class="knowledge-content">• 按时服药，保持规律</text>
+      <text class="knowledge-content">• 注意药物相互作用</text>
+      <text class="knowledge-content">• 如有不适，及时咨询医生</text>
+    </view>
+  </view>
+  
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-btn" bindtap="goToEmergency">
+    紧急求助
+  </view>
+</view>

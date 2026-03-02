@@ -1,0 +1,20 @@
+<!-- pages/blood-pressure-records/blood-pressure-records.wxml -->
+<view class="container">
+  <text class="page-title">血压记录</text>
+  
+  <view class="card">
+    <view wx:for="{{records}}" wx:key="index" class="record-item">
+      <view class="record-date">
+        <text class="date">{{item.date}}</text>
+        <text class="time">{{item.time}}</text>
+      </view>
+      <view class="record-value">
+        <text class="value">{{item.value}}</text>
+        <text class="unit">mmHg</text>
+      </view>
+    </view>
+    <view wx:if="records.length === 0" class="no-records">
+      <text>暂无血压记录</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+<!-- pages/edit-health-condition/edit-health-condition.wxml -->
+<view class="container">
+  <text class="page-title">编辑健康状况</text>
+  
+  <view class="form-card">
+    <view class="form-item">
+      <text class="form-label">既往病史</text>
+      <textarea class="form-textarea" placeholder="请输入既往病史" value="{{pastIllnesses}}" bindinput="bindInput" data-field="pastIllnesses" maxlength="200" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">过敏史</text>
+      <textarea class="form-textarea" placeholder="请输入过敏史" value="{{allergies}}" bindinput="bindInput" data-field="allergies" maxlength="200" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">当前用药</text>
+      <textarea class="form-textarea" placeholder="请输入当前用药" value="{{currentMedications}}" bindinput="bindInput" data-field="currentMedications" maxlength="200" />
+    </view>
+  </view>
+  
+  <view class="button-container">
+    <button class="btn btn-default" bindtap="cancelEdit">取消</button>
+    <button class="btn btn-primary" bindtap="submitForm">保存</button>
+  </view>
+</view>

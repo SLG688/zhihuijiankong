@@ -1,0 +1,234 @@
+/* pages/community-detail/community-detail.wxss */
+
+/* 社区信息卡片样式 */
+.community-info-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.community-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.community-desc {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 20rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.community-stats {
+  display: flex;
+  gap: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.stat-item {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 操作按钮容器 */
+.action-buttons {
+  display: flex;
+  gap: 15rpx;
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  min-width: 200rpx;
+}
+
+/* 卡片头部样式 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.small-btn {
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+}
+
+/* 帖子列表样式 */
+.post-item {
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.post-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.post-item:last-child {
+  margin-bottom: 0;
+}
+
+.post-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.post-stats {
+  display: flex;
+  gap: 20rpx;
+}
+
+.stat {
+  margin-left: 20rpx;
+}
+
+.no-posts {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 对话框样式 */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.dialog-content {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.dialog-header {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999999;
+  cursor: pointer;
+}
+
+.dialog-body {
+  padding: 30rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* 成员列表样式 */
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.member-item:last-child {
+  border-bottom: none;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 5rpx;
+  display: block;
+}
+
+.member-role {
+  font-size: 24rpx;
+  color: #999999;
+  display: block;
+}
+
+.no-members {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 按钮样式 */
+.btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-default {
+  background-color: #f0f0f0;
+  color: #333333;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+}

@@ -1,0 +1,63 @@
+/* pages/new-community/new-community.wxss */
+.container {
+  padding: 40rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  display: block;
+  text-align: center;
+}
+
+.section {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.category-item {
+  padding: 15rpx 30rpx;
+  margin-right: 15rpx;
+  background-color: #f0f0f0;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #666666;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}
+
+.community-item {
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.community-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.community-members {
+  font-size: 24rpx;
+  color: #999999;
+}

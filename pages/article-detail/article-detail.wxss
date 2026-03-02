@@ -1,0 +1,100 @@
+/* pages/article-detail/article-detail.wxss */
+
+/* 文章卡片样式 */
+.article-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.article-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.article-meta {
+  display: flex;
+  gap: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 20rpx;
+}
+
+.article-content {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag {
+  padding: 8rpx 16rpx;
+  background-color: #f0f0f0;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.article-actions {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-item:hover {
+  transform: scale(1.05);
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-bottom: 5rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 相关推荐样式 */
+.related-article-item {
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.related-article-item:hover {
+  transform: translateX(10rpx);
+}
+
+.related-article-item:last-child {
+  border-bottom: none;
+}
+
+.related-article-title {
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 1.4;
+}

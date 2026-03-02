@@ -1,0 +1,74 @@
+<!-- pages/rehabilitation/rehabilitation.wxml -->
+<view class="container">
+  <!-- 训练计划卡片 -->
+  <view class="card">
+    <text class="section-title">我的训练计划</text>
+    <view class="plan-item">
+      <text class="plan-title">上肢康复训练</text>
+      <text class="plan-description">适合上肢功能障碍患者</text>
+      <button class="btn btn-primary" bindtap="startTraining">开始训练</button>
+    </view>
+    <view class="plan-item">
+      <text class="plan-title">下肢康复训练</text>
+      <text class="plan-description">适合下肢功能障碍患者</text>
+      <button class="btn btn-primary" bindtap="startTraining">开始训练</button>
+    </view>
+    <view class="plan-item">
+      <text class="plan-title">平衡训练</text>
+      <text class="plan-description">适合平衡能力障碍患者</text>
+      <button class="btn btn-primary" bindtap="startTraining">开始训练</button>
+    </view>
+  </view>
+  
+  <!-- 训练指导卡片 -->
+  <view class="card">
+    <text class="section-title">训练指导</text>
+    <view class="guide-item">
+      <text class="guide-title">训练前准备</text>
+      <text class="guide-content">1. 穿着舒适的运动服装和鞋子</text>
+      <text class="guide-content">2. 确保训练环境安全，无障碍物</text>
+      <text class="guide-content">3. 准备好必要的辅助工具</text>
+      <text class="guide-content">4. 热身运动 5-10 分钟</text>
+    </view>
+    <view class="guide-item">
+      <text class="guide-title">训练注意事项</text>
+      <text class="guide-content">1. 遵循医生或治疗师的指导</text>
+      <text class="guide-content">2. 训练强度应循序渐进</text>
+      <text class="guide-content">3. 如感到不适，应立即停止训练</text>
+      <text class="guide-content">4. 保持正确的训练姿势</text>
+    </view>
+  </view>
+  
+  <!-- 训练记录卡片 -->
+  <view class="card">
+    <text class="section-title">训练记录</text>
+    <view wx:for="{{trainingRecords}}" wx:key="index" class="record-item">
+      <text class="record-date">{{item.date}}</text>
+      <text class="record-time">{{item.time}}</text>
+      <text class="record-content">{{item.content}}</text>
+      <text class="record-duration">{{item.duration}}</text>
+    </view>
+    <view wx:if="trainingRecords.length === 0" class="no-records">
+      <text>暂无训练记录</text>
+    </view>
+  </view>
+  
+  <!-- 视频指导卡片 -->
+  <view class="card">
+    <text class="section-title">视频指导</text>
+    <view class="video-item">
+      <text class="video-title">上肢关节活动度训练</text>
+      <view class="video-placeholder" bindtap="playVideo">
+        <text class="play-icon">▶</text>
+        <text class="video-desc">点击播放视频</text>
+      </view>
+    </view>
+    <view class="video-item">
+      <text class="video-title">下肢肌力训练</text>
+      <view class="video-placeholder" bindtap="playVideo">
+        <text class="play-icon">▶</text>
+        <text class="video-desc">点击播放视频</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<!-- pages/edit-personal-info/edit-personal-info.wxml -->
+<view class="container">
+  <text class="page-title">编辑个人信息</text>
+  
+  <view class="form-card">
+    <view class="form-item">
+      <text class="form-label">姓名 *</text>
+      <input class="form-input" placeholder="请输入姓名" value="{{name}}" bindinput="bindInput" data-field="name" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">年龄 *</text>
+      <input class="form-input" type="number" placeholder="请输入年龄" value="{{age}}" bindinput="bindInput" data-field="age" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">性别 *</text>
+      <input class="form-input" placeholder="请输入性别" value="{{gender}}" bindinput="bindInput" data-field="gender" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">联系电话 *</text>
+      <input class="form-input" type="number" placeholder="请输入联系电话" value="{{phone}}" bindinput="bindInput" data-field="phone" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">紧急联系人 *</text>
+      <input class="form-input" placeholder="请输入紧急联系人及电话" value="{{emergencyContact}}" bindinput="bindInput" data-field="emergencyContact" />
+    </view>
+  </view>
+  
+  <view class="button-container">
+    <button class="btn btn-default" bindtap="cancelEdit">取消</button>
+    <button class="btn btn-primary" bindtap="submitForm">保存</button>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/health-record/health-record",
+    "pages/edit-personal-info/edit-personal-info",
+    "pages/edit-health-condition/edit-health-condition",
+    "pages/blood-pressure-records/blood-pressure-records",
+    "pages/blood-sugar-records/blood-sugar-records",
+    "pages/heart-rate-records/heart-rate-records",
+    "pages/health-report/health-report",
+    "pages/health-monitor/health-monitor",
+    "pages/rehabilitation/rehabilitation",
+    "pages/medication/medication",
+    "pages/medication/add-medication/add-medication",
+    "pages/medication/edit-medication/edit-medication",
+    "pages/emergency/emergency",
+    "pages/knowledge/knowledge",
+    "pages/community/community",
+    "pages/community-detail/community-detail",
+    "pages/post/post",
+    "pages/health-articles/health-articles",
+    "pages/article-detail/article-detail",
+    "pages/recommendation/recommendation",
+    "pages/test/test",
+    "pages/simple-test/simple-test",
+    "pages/new-community/new-community",
+    "pages/simple-community/simple-community",
+    "pages/admin/admin"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4CAF50",
+    "navigationBarTitleText": "智慧健控",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#4CAF50",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/health-record/health-record",
+        "text": "健康档案"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/emergency/emergency",
+        "text": "紧急求助"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,113 @@
+<!-- pages/admin/admin.wxml -->
+<view class="container">
+  <text class="page-title">管理员后台</text>
+  
+  <!-- 标签切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'users' ? 'active' : ''}}" bindtap="switchTab" data-tab="users">
+      <text>用户管理</text>
+    </view>
+    <view class="tab-item {{activeTab === 'communities' ? 'active' : ''}}" bindtap="switchTab" data-tab="communities">
+      <text>社区管理</text>
+    </view>
+    <view class="tab-item {{activeTab === 'contents' ? 'active' : ''}}" bindtap="switchTab" data-tab="contents">
+      <text>内容管理</text>
+    </view>
+    <view class="tab-item {{activeTab === 'system' ? 'active' : ''}}" bindtap="switchTab" data-tab="system">
+      <text>系统配置</text>
+    </view>
+  </view>
+  
+  <!-- 用户管理 -->
+  <view wx:if="activeTab === 'users'" class="tab-content">
+    <view class="card">
+      <text class="card-title">用户列表</text>
+      <view wx:for="{{users}}" wx:key="index" class="user-item">
+        <view class="user-info">
+          <text class="user-name">{{item.name}}</text>
+          <text class="user-role">{{item.role === 'admin' ? '管理员' : '普通用户'}}</text>
+        </view>
+        <button class="btn btn-primary small-btn" bindtap="manageUserRole" data-index="{{index}}">
+          {{item.role === 'admin' ? '降级' : '升级'}}
+        </button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 社区管理 -->
+  <view wx:if="activeTab === 'communities'" class="tab-content">
+    <view class="card">
+      <text class="card-title">社区列表</text>
+      <view wx:for="{{communities}}" wx:key="index" class="community-item">
+        <view class="community-info">
+          <text class="community-name">{{item.name}}</text>
+          <view class="community-stats">
+            <text class="stat-item">{{item.memberCount}}人</text>
+            <text class="stat-item status-{{item.status}}">{{item.status === 'active' ? '已激活' : '待审核'}}</text>
+          </view>
+        </view>
+        <view class="community-actions">
+          <button class="btn btn-primary small-btn" bindtap="reviewCommunity" data-index="{{index}}">
+            {{item.status === 'pending' ? '通过' : '设为待审核'}}
+          </button>
+          <button class="btn btn-danger small-btn" bindtap="deleteCommunity" data-index="{{index}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 内容管理 -->
+  <view wx:if="activeTab === 'contents'" class="tab-content">
+    <view class="card">
+      <text class="card-title">内容列表</text>
+      <view wx:for="{{contents}}" wx:key="index" class="content-item">
+        <view class="content-info">
+          <text class="content-title">{{item.title}}</text>
+          <view class="content-meta">
+            <text class="author">{{item.author}}</text>
+            <text class="status status-{{item.status}}">{{item.status === 'approved' ? '已通过' : '待审核'}}</text>
+          </view>
+        </view>
+        <button class="btn btn-primary small-btn" bindtap="reviewContent" data-index="{{index}}">
+          {{item.status === 'pending' ? '通过' : '设为待审核'}}
+        </button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 系统配置 -->
+  <view wx:if="activeTab === 'system'" class="tab-content">
+    <view class="card">
+      <view class="card-header">
+        <text class="card-title">社区分类</text>
+        <button class="btn btn-primary small-btn" bindtap="showAddCategoryDialog">添加分类</button>
+      </view>
+      <view wx:for="{{categories}}" wx:key="index" class="category-item">
+        <text class="category-name">{{item.name}}</text>
+        <view class="category-actions">
+          <button class="btn btn-primary small-btn" bindtap="editCategory" data-index="{{index}}">编辑</button>
+          <button class="btn btn-danger small-btn" bindtap="deleteCategory" data-index="{{index}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 添加分类对话框 -->
+  <view hidden="{{!showAddCategory}}" class="dialog-overlay">
+    <view class="dialog-content">
+      <view class="dialog-header">
+        <text class="dialog-title">添加分类</text>
+      </view>
+      <view class="dialog-body">
+        <view class="form-item">
+          <text class="form-label">分类名称 *</text>
+          <input class="form-input" placeholder="请输入分类名称" value="{{newCategory}}" bindinput="bindCategoryInput" maxlength="20" />
+        </view>
+      </view>
+      <view class="dialog-footer">
+        <button class="btn btn-default" bindtap="closeAddCategoryDialog">取消</button>
+        <button class="btn btn-primary" bindtap="addCategory">确认</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+<!-- pages/medication/add-medication/add-medication.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">添加用药提醒</text>
+  </view>
+  
+  <view class="form">
+    <view class="form-item">
+      <text class="form-label">药品名称 *</text>
+      <input class="form-input" placeholder="请输入药品名称" value="{{addForm.name}}" bindinput="bindFormInput" data-field="name" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">药品规格 *</text>
+      <input class="form-input" placeholder="请输入药品规格" value="{{addForm.specification}}" bindinput="bindFormInput" data-field="specification" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">剂量 *</text>
+      <input class="form-input" placeholder="请输入剂量" value="{{addForm.dosage}}" bindinput="bindFormInput" data-field="dosage" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">用法 *</text>
+      <input class="form-input" placeholder="请输入用法" value="{{addForm.usage}}" bindinput="bindFormInput" data-field="usage" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">频次 *</text>
+      <input class="form-input" placeholder="请输入频次" value="{{addForm.frequency}}" bindinput="bindFormInput" data-field="frequency" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">用药时间 *</text>
+      <input class="form-input" placeholder="请输入用药时间" value="{{addForm.time}}" bindinput="bindFormInput" data-field="time" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">用药时长 *</text>
+      <input class="form-input" placeholder="请输入用药时长" value="{{addForm.duration}}" bindinput="bindFormInput" data-field="duration" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">注意事项</text>
+      <textarea class="form-textarea" placeholder="请输入注意事项" value="{{addForm.notes}}" bindinput="bindFormInput" data-field="notes" />
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="btn btn-default" bindtap="cancel">取消</button>
+    <button class="btn btn-primary" bindtap="submitForm">确认</button>
+  </view>
+</view>

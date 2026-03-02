@@ -1,0 +1,73 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 欢迎区域 -->
+  <view class="card">
+    <text class="welcome-text">欢迎使用智慧健控</text>
+    <text class="subtitle">为您的健康保驾护航</text>
+  </view>
+  
+  <!-- 功能入口 -->
+  <view class="function-grid">
+    <navigator url="../health-monitor/health-monitor" class="function-item">
+      <view class="function-icon health-icon">🏥</view>
+      <text class="function-text">健康监测</text>
+    </navigator>
+    
+    <navigator url="../rehabilitation/rehabilitation" class="function-item">
+      <view class="function-icon rehab-icon">🏃</view>
+      <text class="function-text">康复训练</text>
+    </navigator>
+    
+    <navigator url="../medication/medication" class="function-item">
+      <view class="function-icon med-icon">💊</view>
+      <text class="function-text">用药提醒</text>
+    </navigator>
+    
+    <navigator url="../knowledge/knowledge" class="function-item">
+      <view class="function-icon knowledge-icon">📚</view>
+      <text class="function-text">护理知识</text>
+    </navigator>
+  </view>
+  
+  <!-- 健康数据概览 -->
+  <view class="card">
+    <text class="section-title">健康数据概览</text>
+    <view class="health-overview">
+      <view class="overview-item">
+        <text class="overview-value">{{bloodPressure}}</text>
+        <text class="overview-label">血压</text>
+      </view>
+      <view class="overview-item">
+        <text class="overview-value">{{heartRate}}</text>
+        <text class="overview-label">心率</text>
+      </view>
+      <view class="overview-item">
+        <text class="overview-value">{{bloodSugar}}</text>
+        <text class="overview-label">血糖</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 今日提醒 -->
+  <view class="card">
+    <view class="section-header">
+      <text class="section-title">今日提醒</text>
+      <button class="btn btn-primary small-btn" bindtap="showAddReminder">新建提醒</button>
+    </view>
+    <view wx:for="{{todayReminders}}" wx:key="index" class="reminder-item" wx:class="{ 'reminder-item-unfinished': item.status === '未服用' }">
+      <text class="reminder-time">{{item.time}}</text>
+      <text class="reminder-content">{{item.content}}</text>
+      <text wx:if="item.status === '已服用'" class="reminder-status finished">已服用</text>
+      <text wx:else class="reminder-status unfinished">未服用</text>
+      <button wx:if="item.status === '未服用'" class="btn btn-primary small-btn" bindtap="markAsTaken" data-index="{{index}}">标记已服用</button>
+    </view>
+    <view wx:if="todayReminders.length === 0" class="no-reminders">
+      <text>今日无提醒</text>
+    </view>
+  </view>
+  
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-btn" bindtap="goToEmergency">
+    紧急求助
+  </view>
+</view>

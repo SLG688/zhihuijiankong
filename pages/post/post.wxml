@@ -1,0 +1,61 @@
+<!-- pages/post/post.wxml -->
+<view class="container">
+  <!-- 帖子内容 -->
+  <view class="post-card">
+    <view class="post-header">
+      <text class="post-title">{{post.title}}</text>
+      <view class="post-meta">
+        <text class="post-author">{{post.author}}</text>
+        <text class="post-time">{{post.time}}</text>
+      </view>
+    </view>
+    <view class="post-content">
+      <text>{{post.content}}</text>
+    </view>
+    <view class="post-actions">
+      <view class="action-item" bindtap="likePost">
+        <text class="action-icon">{{isLiked ? '❤️' : '🤍'}}</text>
+        <text class="action-text">{{post.likes}}赞</text>
+      </view>
+      <view class="action-item" bindtap="showComments">
+        <text class="action-icon">💬</text>
+        <text class="action-text">{{post.comments}}评论</text>
+      </view>
+      <view class="action-item" bindtap="sharePost">
+        <text class="action-icon">📤</text>
+        <text class="action-text">分享</text>
+      </view>
+      <view wx:if="post.author === currentUser || isAdmin" class="action-item delete-action" bindtap="deletePost">
+        <text class="action-icon">🗑️</text>
+        <text class="action-text">删除</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 评论区 -->
+  <view class="card">
+    <text class="section-title">评论 ({{comments.length}})</text>
+    <view wx:for="{{comments}}" wx:key="index" class="comment-item">
+      <view class="comment-header">
+        <text class="comment-author">{{item.author}}</text>
+        <text class="comment-time">{{item.time}}</text>
+      </view>
+      <text class="comment-content">{{item.content}}</text>
+      <view class="comment-actions">
+        <text class="comment-like" bindtap="likeComment" data-index="{{index}}">
+          {{item.isLiked ? '❤️' : '🤍'}} {{item.likes}}
+        </text>
+        <text class="comment-reply" bindtap="replyComment" data-index="{{index}}">回复</text>
+      </view>
+    </view>
+    <view wx:if="comments.length === 0" class="no-comments">
+      <text>暂无评论，快来发表你的看法吧</text>
+    </view>
+  </view>
+  
+  <!-- 评论输入框 -->
+  <view class="comment-input-section">
+    <input class="comment-input" placeholder="写下你的评论..." bindinput="bindCommentInput" />
+    <button class="btn btn-primary small-btn" bindtap="submitComment">发送</button>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+<!-- pages/health-report/health-report.wxml -->
+<view class="container">
+  <!-- 报告标题 -->
+  <view class="report-header">
+    <text class="report-title">健康报告</text>
+    <text class="report-date">{{report.date}}</text>
+  </view>
+  
+  <!-- 报告摘要 -->
+  <view class="card">
+    <text class="section-title">报告摘要</text>
+    <text class="report-summary">{{report.summary}}</text>
+  </view>
+  
+  <!-- 血压分析 -->
+  <view class="card">
+    <text class="section-title">血压分析</text>
+    <view class="analysis-item">
+      <text class="analysis-label">平均血压：</text>
+      <text class="analysis-value">{{report.bloodPressure.average}}</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">状态：</text>
+      <text class="analysis-value status-{{report.bloodPressure.status === '正常' ? 'normal' : report.bloodPressure.status === '未记录' ? 'none' : 'abnormal'}}">{{report.bloodPressure.status}}</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">建议：</text>
+      <text class="analysis-value">{{report.bloodPressure.advice}}</text>
+    </view>
+  </view>
+  
+  <!-- 血糖分析 -->
+  <view class="card">
+    <text class="section-title">血糖分析</text>
+    <view class="analysis-item">
+      <text class="analysis-label">平均血糖：</text>
+      <text class="analysis-value">{{report.bloodSugar.average}} mmol/L</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">状态：</text>
+      <text class="analysis-value status-{{report.bloodSugar.status === '正常' ? 'normal' : report.bloodSugar.status === '未记录' ? 'none' : 'abnormal'}}">{{report.bloodSugar.status}}</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">建议：</text>
+      <text class="analysis-value">{{report.bloodSugar.advice}}</text>
+    </view>
+  </view>
+  
+  <!-- 心率分析 -->
+  <view class="card">
+    <text class="section-title">心率分析</text>
+    <view class="analysis-item">
+      <text class="analysis-label">平均心率：</text>
+      <text class="analysis-value">{{report.heartRate.average}} 次/分钟</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">状态：</text>
+      <text class="analysis-value status-{{report.heartRate.status === '正常' ? 'normal' : report.heartRate.status === '未记录' ? 'none' : 'abnormal'}}">{{report.heartRate.status}}</text>
+    </view>
+    <view class="analysis-item">
+      <text class="analysis-label">建议：</text>
+      <text class="analysis-value">{{report.heartRate.advice}}</text>
+    </view>
+  </view>
+  
+  <!-- 总体建议 -->
+  <view class="card">
+    <text class="section-title">总体建议</text>
+    <text class="advice-content">{{report.overallAdvice}}</text>
+  </view>
+  
+  <!-- 返回按钮 -->
+  <button class="btn btn-primary" bindtap="goBack">返回</button>
+</view>

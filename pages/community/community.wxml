@@ -1,0 +1,109 @@
+<!-- pages/community/community.wxml -->
+<view class="container">
+  <!-- 调试信息 -->
+  <view class="debug-info">
+    <text>调试: 页面已加载</text>
+  </view>
+  
+  <!-- 社区分类 -->
+  <view class="category-section">
+    <text class="section-title">分类</text>
+    <view wx:for="{{categories}}" wx:key="index" class="category-item" bindtap="selectCategory" data-index="{{index}}">
+      <text class="category-text">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <!-- 社区列表 -->
+  <view class="card">
+    <text class="section-title">社区列表</text>
+    <view wx:for="{{communities}}" wx:key="index" class="community-item" bindtap="enterCommunity" data-index="{{index}}">
+      <view class="community-info">
+        <text class="community-name">{{item.name}}</text>
+        <text class="community-desc">{{item.description}}</text>
+        <view class="community-stats">
+          <text class="stat-item">{{item.memberCount}}人</text>
+          <text class="stat-item">{{item.postCount}}帖</text>
+        </view>
+      </view>
+      <view class="community-arrow">→</view>
+    </view>
+    <view wx:if="communities.length === 0" class="no-communities">
+      <text>暂无社区</text>
+    </view>
+  </view>
+  
+  <!-- 热门帖子 -->
+  <view class="card">
+    <text class="section-title">热门帖子</text>
+    <view wx:for="{{hotPosts}}" wx:key="index" class="post-item" bindtap="viewPost" data-index="{{index}}">
+      <text class="post-title">{{item.title}}</text>
+      <view class="post-meta">
+        <text class="post-author">{{item.author}}</text>
+        <text class="post-time">{{item.time}}</text>
+        <text class="post-views">{{item.views}}浏览</text>
+      </view>
+    </view>
+    <view wx:if="hotPosts.length === 0" class="no-posts">
+      <text>暂无热门帖子</text>
+    </view>
+  </view>
+  
+  <!-- 管理员功能 -->
+  <view wx:if="isAdmin" class="admin-section">
+    <button class="btn btn-primary" bindtap="createCommunity">创建社区</button>
+    <button class="btn btn-primary" bindtap="manageCategories">管理分类</button>
+  </view>
+  
+  <!-- 创建社区对话框 -->
+  <view hidden="{{!showCreateDialog}}" class="dialog-overlay">
+    <view class="dialog-content">
+      <view class="dialog-header">
+        <text class="dialog-title">创建社区</text>
+      </view>
+      <view class="dialog-body">
+        <view class="form-item">
+          <text class="form-label">社区名称 *</text>
+          <input class="form-input" placeholder="请输入社区名称" value="{{createForm.name}}" bindinput="bindCreateFormInput" data-field="name" maxlength="50" />
+        </view>
+        <view class="form-item">
+          <text class="form-label">社区描述</text>
+          <textarea class="form-textarea" placeholder="请输入社区描述" value="{{createForm.description}}" bindinput="bindCreateFormInput" data-field="description" maxlength="200" />
+        </view>
+        <view class="form-item">
+          <text class="form-label">分类 *</text>
+          <picker class="form-picker" range="{{categories}}" range-key="name" value="{{createForm.categoryIndex}}" bindchange="bindCategoryChange">
+            <view class="picker-text">{{categories[createForm.categoryIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="dialog-footer">
+        <button class="btn btn-default" bindtap="closeCreateDialog">取消</button>
+        <button class="btn btn-primary" bindtap="submitCreateForm">确认</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 管理分类对话框 -->
+  <view hidden="{{!showManageDialog}}" class="dialog-overlay">
+    <view class="dialog-content">
+      <view class="dialog-header">
+        <text class="dialog-title">管理分类</text>
+      </view>
+      <view class="dialog-body">
+        <view class="form-item">
+          <text class="form-label">分类名称 *</text>
+          <input class="form-input" placeholder="请输入分类名称" value="{{manageForm.categoryName}}" bindinput="bindManageFormInput" data-field="categoryName" maxlength="20" />
+        </view>
+      </view>
+      <view class="dialog-footer">
+        <button class="btn btn-default" bindtap="closeManageDialog">取消</button>
+        <button class="btn btn-primary" bindtap="submitManageForm">添加</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 紧急求助按钮 -->
+  <view class="emergency-btn" bindtap="goToEmergency">
+    紧急求助
+  </view>
+</view>
