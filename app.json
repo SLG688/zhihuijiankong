@@ -21,10 +21,6 @@
     "pages/health-articles/health-articles",
     "pages/article-detail/article-detail",
     "pages/recommendation/recommendation",
-    "pages/test/test",
-    "pages/simple-test/simple-test",
-    "pages/new-community/new-community",
-    "pages/simple-community/simple-community",
     "pages/admin/admin"
   ],
   "window": {
